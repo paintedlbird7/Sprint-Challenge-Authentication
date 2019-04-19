@@ -41,16 +41,3 @@ function generateToken(user) {
     };
     return jwt.sign(jwtPayload, jwtKey, jwtOptions);
   }
-
-// function generateToken(user) {
-//   const payload = {
-//     subject: user.id,
-//     username: user.username,
-//     jokes: ['Dad'],
-//   }
-
-//   const options = {
-//     expiresIn: '1d'
-//   }
-//   return jwt.sign(payload, secrets.jwtSecret, jwtKey, options)
-// }
