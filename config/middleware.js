@@ -32,9 +32,9 @@ function generateToken(user) {
     const jwtPayload = {
       ...user,
       extra: "extra info",
-     subject: user.id,
-    username: user.username,
-        jokes: ['Dad'],
+    //  subject: user.id,
+    // username: user.username,
+        // jokes: ['Dad'],
     };
     const jwtOptions = {
       expiresIn: "1d"

@@ -20,14 +20,9 @@ function register(req, res) {
 
   db('users')
   .insert(user)
-    .then(saved => {
-              // const saved = ids[0];
-      res.status(201).json(
-        { 
-        saved
-        // userId: id 
-      }
-      );
+    .then(ids => {
+              const id = ids[0];
+      res.status(201).json({ userId: id });
     })
     .catch(error => {
       res.status(500).json(error);
@@ -37,12 +32,15 @@ function register(req, res) {
 
 function login(req, res) {
   // implement user login
+  let { username, password } = req.body;
+    
   db("users")
 //   Users.findBy({ username })
     .first()
     .then(user => {
       if (user && bcrypt.compareSync(password, user.password)) {
         const token = generateToken(user);
+
         // the server needs to return the token to the client
         // this doesn't happen automatically like it happens with cookies
         res.status(200).json({
