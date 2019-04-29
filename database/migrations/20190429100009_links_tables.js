@@ -10,7 +10,7 @@
     .unique()
   })
   }
-  
+  //comment
   exports.down = function(knex, Promise) {
     return knex.schema.dropTableifExists('links')
   };
