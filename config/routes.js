@@ -6,10 +6,11 @@ const jwt = require('jsonwebtoken');
 
 const { authenticate, generateToken } = require('../config/middleware.js');
 
+//jokes = links
 module.exports = server => {
-  server.post('/api/register', register);
-  server.post('/api/login', login);
-  server.get('/api/jokes', authenticate, getJokes);
+  server.post('/api/register', register); // post
+  server.post('/api/login', login); // do a post
+  server.get('/api/jokes', authenticate, getLinks); // get
 };
 
 function register(req, res) {
@@ -56,17 +57,17 @@ function login(req, res) {
 }
 
 
-function getJokes(req, res) {
+function getLinks(req, res) {
   const requestOptions = {
     headers: { accept: 'application/json' },
   };
 
-  axios
+  axios // links.herokuapp.com/links
     .get('https://icanhazdadjoke.com/search', requestOptions)
     .then(response => {
       res.status(200).json(response.data.results);
     })
     .catch(err => {
-      res.status(500).json({ message: 'Error Fetching Jokes', error: err });
+      res.status(500).json({ message: 'Error Fetching Links', error: err });
     });
 }

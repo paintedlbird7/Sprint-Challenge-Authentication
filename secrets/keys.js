@@ -1,4 +1,4 @@
 module.exports = {
-    jwtKey: 'a joke here for the key',
+    jwtKey: 'a link here for the key',
 }
 
